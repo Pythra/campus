@@ -1,0 +1,18 @@
+{% extends 'market/base.html' %}
+{% block title %}
+{% endblock %}
+<style>
+  
+.form{border:none; border-bottom:1px solid black}
+</style>
+{% block content %}
+<h6>Rent</h6>
+<div class="container" style="font-size: small;">
+        <form method="post" enctype = "multipart/form-data">
+          {% csrf_token %}
+
+          {{ form.as_p }}
+          <button class="btn btn-sm btn-info mt-3" type="submit">Submit</button>
+        </form>
+        </div>
+{% endblock %}

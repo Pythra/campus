@@ -1,0 +1,42 @@
+{% extends 'market/base.html' %}
+{% block title %}
+
+
+#ac{color:red; font-weight: 660; font-size: 14px;font-family: 'Dosis', sans-serif;}
+
+{% endblock %}
+{% block content %}
+{% include 'market/intro.html' %}
+
+
+<div style="border: none; background-color: rgb(255, 255, 255); padding: 7px; width: 100%;">
+    {% if houses %}
+        <div class="">
+            <small id="ac">
+                ACCOMODATION 
+            </small>
+            {% include 'market/house_list.html' %}
+        </div>
+    {% endif %}
+
+</div>
+
+<div class="mt-4" style="border: none; bort background-color: rgb(255, 255, 255); padding: 7px; width: 100%;">
+    
+    <small id="ac" style="color: rgb(31, 20, 179);">
+        PRODUCTS<a href="{% url 'product_form' %}"></a><br>
+    </small> 
+    {% include 'market/product_list.html' %}
+    
+</div>
+
+<div class="mt-4" style="border: none; bort background-color: rgb(255, 255, 255); padding: 7px; width: 100%;">
+    
+    <small id="ac" style="color: rgb(2, 219, 13);">
+        SERVICES
+    </small> 
+    {% include 'market/service_list.html' %}
+    
+</div>
+
+{% endblock %}

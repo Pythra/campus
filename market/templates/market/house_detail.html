@@ -1,0 +1,89 @@
+{% extends 'market/base.html' %}
+{% block title %}
+#product-detail{border: 1px ;
+            padding:20px;
+            border-radius:16px;
+            margin-top:10px;
+            -moz-box-shadow: 5px 5px 5px #777777;
+            -webkit-box-shadow: 5px 5px 5px #777777;
+            box-shadow: 4px 4px 4px bisque, -5px -5px 5px whitesmoke;
+                }
+        #tag{opacity:1.8; color:brown;}
+.picscroll {
+  overflow: auto; overflow-y: hidden;
+  white-space: nowrap;
+}
+
+@media( max-width:768px)
+{#postpic {float:center;}
+      #comment{width:100%;}
+        #commenter{font-size:10px;}
+#tag{ font-size:13px;}
+#info{ font-size:13px;}
+      }
+
+{% endblock %}
+
+{% block content %}
+<center>
+    <h6 class="my-3"> </h6>
+<div class="picscroll mx-auto">
+                <img src="{{ house.pic1.url }}">
+             {% if house.pic2 %}
+                <img src="{{ house.pic2.url }}">
+            {% endif %}
+             {% if house.pic3 %}
+                <img src="{{ house.pic3.url }}">
+            {% endif %}
+             {% if house.pic4 %}
+                <img src="{{ house.pic4.url }}">
+            {% endif %}
+</div>
+</center>
+<div id="product-detail">
+    <center>
+        
+    </center>
+    <table class="table mb-0">
+        <tbody>
+            <tr>
+                <td id="tag"><b>Charge:</b></td>
+                <td id="info">${{ house.price }}</td>
+            </tr>
+            <tr>
+                <td id="tag"><b>Product sold at: </b></td>
+                <td id="info">{{ house.school }}</td>
+            </tr>
+            <tr>
+                <td id="tag" class="mt-0"><b>Description: </b></td>
+                <td id="info"> </td>
+            </tr>
+            <tr>
+                <td id="tag"><b>Seller: </b></td>
+                <td  id="info" colspan="mb-0">{{ request.user.shop }}</td>
+            </tr>
+            <tr>
+                <td id="tag" class="mt-0"><b>Phone number: </b></td>
+                <td id="info">{{ request.user.shop.phone }}</td>
+            </tr>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+
+<center>
+    {% if house.shop == request.user.shop %}
+        <a href="{% url 'house_update' house.pk %}">
+            <button class="btn btn-md btn-warning mr-2" style="border-radius: 45px; font-weight:500;">
+                Edit house
+            </button>
+        </a>
+        <a href="{% url 'service_confirm_delete' service.slug %}?next={{ request.path}}">
+            <button class="btn btn-md btn-danger" style="border-radius: 45px; font-weight:500;">
+                Delete house
+            </button>
+        </a>
+    {% endif %}
+</center>

@@ -1,0 +1,50 @@
+{% load humanize %}{% load static %}
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600;700&display=swap" rel="stylesheet">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600;700&display=swap');
+</style>
+
+<div class="" style="">
+    <span style=" font-weight: 600;font-size: 10px; text-transform: uppercase; 
+    display: inline-block; line-height: 1.5em;">
+        <a style=" color: rgb(0, 0, 0);" href="{% url 'service_form' %}">
+            <button class="mt-1">Have a service to render?</button></a> 
+       
+    </span>
+</div>
+
+<ul class="list-group" style="border:none; border-top:1px solid whitesmoke !important;">
+    {% for ser in services %}
+    <li class="list-group-item my-1" style="padding:4px !important; height:78px; border: none !important; border-bottom: 1px solid whitesmoke !important;">
+        <a style="display: block; color: black;" href="{% url 'service_detail' ser.pk %}">
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ser.picture.url}}" class="mb-1 ml-1 pull-right" style="position: absolute;max-height:57px">
+                </div>
+            <div class="col-8" style="font-size: 11px; font-weight: 550;">
+                {{ ser.name | upper}}<br>
+                &#8358 {{ ser.charge | intcomma }}<br>
+        
+                 
+                <span style="font-style: italic; color: rgb(255, 0, 0);font-size: 11px; ">
+                    #{{ ser.school | capfirst }}
+                </span>
+                <div class="mt-1">
+                    
+                <span style="font-size: 10px; color: lightgrey; margin-right: 3px;">
+                    CONTACT AGENT:   
+                </span>  
+           
+             </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="#" style="float: right; font-size:11px; font-weight: 600; 
+display: block; margin:6px 3px 0 0;">
+    SEE MORE...</a>

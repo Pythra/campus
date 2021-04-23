@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% load static %}
+    <title>Bootstrap 4 Fluid Layout Example</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,500;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Da+2" type="text/css"><link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Ubuntu:ital,wght@0,400;0,500;1,500;1,700&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,500;1,700&display=swap');
+ 
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');  
+
+
+#signup{ font-family:"baloo da 2"; color:white; font-weight: 500; font-size:17px;}
+#login{ font-size:17px; color: brown;}
+
+
+@media( max-width:768px)
+{
+#sour{color: black; font-family: 'kalam', cursive; font-size:44px; font-weight:500; }
+    
+.navbar-custom{height:61px; width: 100%;}}
+.navbar-custom{height:61px; width: 100%; border:none;  border-bottom: 1px solid whitesmoke; margin-left: 5px;}
+
+#sour{color: red; font-family: 'kalam', cursive; font-size:27px; font-weight:500; }
+
+  </style>
+  </head>
+  <body style="width:100%;">
+<nav class="navbar navbar-expand-md navbar-light navbar-custom">
+    <div id="for_sm" class="container ">
+        <div class="row">
+            <div class="col-7">
+    <a href="{% url 'home' %}" class="navbar-brand">
+      </i><span id="sour">Campus Compass</span>
+    </a>
+    </div>
+    <div class="col-5">
+    <div id="for_sm" class= "mt-2 ml-5 pull-right">
+        {% include 'market/includes/menu.html' %}
+     
+    </div>
+    </div>
+    </div></div>
+        <div class="navbar-nav ml-5" id="for_bg">
+            <a href="{% url 'home' %}" class="nav-item nav-link active" id="navmain">Home</a>
+            <a href="#" class="nav-item nav-link" id="navmain">About Us</a>
+            <a href="#" class="nav-item nav-link" id="navmain">Upcoming</a>
+            <a href="#" class="nav-item nav-link" id="navmain">Memeverse</a>
+        </div>
+            <div class="navbar-nav ml-auto" id="for_bg">
+
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout'%}?next={{ request.path}}" class="nav-item nav-link btn btn-sm btn-outline-dark" >Logout</a>
+            {% else %}
+
+            <a href="{% url 'login'%}?next={{ request.path}}" class="nav-item nav-link btn btn-sm" id="login">Login</a>
+            <a href="{% url 'signup'%}" class="nav-item nav-link text-muted">
+                <button class="btn btn-secondary btn-sm"><span id="signup">Sign up</span></button></a>
+            {% endif %}
+            </div>
+
+</nav>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+{% load static %}
+<style>
+    .icon{ font-size:23px; color:grey}
+    #ann_box{display:block;font-size:13px; border:none; background-color:bisque; padding:4px;
+              width:95%; border-radius:0 0 6px 6px ;
+      transform: rotate(-45deg);}
+    #red{color:white; font-size:13px;height:20px; background-color:red; width:95%;
+              border-radius:6px 6px 0 0; margin-top:10px; padding:1px; letter-spacing:0.1em;}
+  .sidenav {
+    height: auto;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 7%;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
+    transition: 1s;
+    padding-top: 24px;
+    padding-bottom: 13px;
+    border: 1px solid whitesmoke;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    display: block;
+    transition: 1s;
+  }
+  
+  .sidenav a:hover {
+    border: 1px solid whitesmoke; background-color: rgb(187, 187, 187);
+  }
+  
+  .closebtn {
+    position: absolute;
+    top: 0;
+    font-size: 32px;
+    
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 13px;}
+  }
+  .lup{border:none; border-top: 1px solid red;}
+  .lud{border:none; border-top: 1px solid red;}
+  .tb{border:1px solid lightgrey; text-align: center; font-size:small; padding:3px}
+  </style>
+  
+      <div id="mySidenav" class="sidenav">
+        <span href="javascript:void(0)" class="closebtn ml-1" style="color: rgb(250, 0, 0);"
+         onclick="closeNav()">&times;</span><br>
+         {% if user.is_authenticated %}
+        <center style="font-size: large;">
+          <i  style="font-size: 38px;" class="fa fa-user-circle-o mb-2"></i><br>
+          <b style="font-size: 12px; text-transform: uppercase;">{{ request.user }}</b><br>
+        </center>
+        {% else %}
+        <center style="font-size: large;">
+          <i  style="color:rgb(0, 0, 0); font-size: 38px;" class="fa fa-user-circle-o mb-2"></i><br>
+          <b style="color: rgb(255, 0, 0); font-size: 12px; text-transform: uppercase;">MY PROFILE</b><br>
+        </center>
+        {% endif %}
+         
+        <a href="#"> About</a>
+        <a href="#">Services</a>
+        <a href="#">Customer care</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout'%}?next={{ request.path}}">Logout</a>
+        {% else %}
+
+        <a href="{% url 'login'%}?next={{ request.path}}" >Login</a>
+        <a href="{% url 'signup'%}" class="">Sign up
+          </a>
+        {% endif %} 
+      </div>
+      
+      <span style="cursor:pointer" onclick="openNav()">
+        <img  style="height:23px;" data-toggle="modal" data-target="#modal{{ navlist }}" 
+        src="{% static 'market/comp.svg' %}" ></span>
+      
+      <script>
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "177px";
+          document.getElementById("main").style.marginLeft = "200px";
+          document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+      }
+      </script>
+      
+    
+
+
+<!-- Modal -->
+<div class="modal fade w-80" id="modalmail" tabindex="-1" role="dialog" 
+aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+  <h6 class="modal-title" id="exampleModalLongTitle">
+    Send us an email
+  </h6>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<center class="modal-body w-80" style="font-size:14px">
+ <br>
+  <input style="border:1px solid grey; height:90px; width:80%" placeholder="Enter a message" type="text" class="mb-1"><br>
+    <input class="btn btn-success btn-sm mt-2" type="submit" value="submit">
+    
+</center>
+
+</div>
+</div>
+</div>

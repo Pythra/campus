@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>MilkMarket Homepage</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Da+2" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+{% block title %}{% endblock %}
+.col-lg-9{
+    border-left:1px solid #E0BDB7; height:100%;
+        }
+
+
+@media( min-width:768px)
+{
+#for_sm{display:none;}
+}
+
+
+@media( max-width:768px)
+{}
+#for_bg{display:none;}
+#sidead{ display: none;}
+
+   </style>
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'market/style.css' %}">
+</head>
+<body class="mb-5">
+{% include 'market/includes/nav.html' %}
+<div class="">
+    <div class="row">
+        <div class="col-lg-3" id="sidead">
+            <div class="container">
+                {% block sidebar %} {% include 'market/includes/sidebar.html' %} {% endblock sidebar %}
+            </div>
+        </div>
+        <div class="col-lg-9">
+                {% block content %} {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+<footer style="font-size:12px; background-color: whitesmoke; border-top: 1px thin lightgrey;
+ padding: 6%; bottom: 0;" class="mt-2">
+    
+    <center style="text-align:center; ">
+        Copyright &#169 2020 Campus Compass
+    </center>
+</footer>
